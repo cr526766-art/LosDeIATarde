@@ -1,0 +1,28 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Variables privadas
+.env
+
+# Archivos subidos
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Modelos entrenados
+#models/*
+#!models/.gitkeep
+
+# Resultados generados
+#results/*
+#!results/.gitkeep
+
+# VS Code y Windows
+.vscode/
+Thumbs.db
+.DS_Store
