@@ -1,28 +1,18 @@
-# Entorno virtual
+# Entornos virtuales
 .venv/
 venv/
+env/
 
-# Python
+# Archivos temporales de Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+
+# Configuración de VS Code
+.vscode/
 
 # Variables privadas
 .env
 
-# Archivos subidos
-data/uploads/*
-!data/uploads/.gitkeep
-
-# Modelos entrenados
-#models/*
-#!models/.gitkeep
-
-# Resultados generados
-#results/*
-#!results/.gitkeep
-
-# VS Code y Windows
-.vscode/
-Thumbs.db
+# Archivos del sistema
 .DS_Store
+Thumbs.db
