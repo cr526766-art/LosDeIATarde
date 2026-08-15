@@ -2,7 +2,7 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -135,20 +135,19 @@ def cargar_base_datos(nombre_archivo):
     return datos, atributos, columna_objetivo
 
 
+# La dirección principal abre la pantalla de clasificación.
 @app.route("/")
 def inicio():
+    return redirect(url_for("clasificar"))
+
+
+# Esta ruta únicamente muestra la pantalla de entrenamiento.
+# Todavía no procesa ningún formulario.
+@app.route("/training.html")
+def entrenar():
     return render_template(
-        "classify.html",
-        modelos=obtener_modelos(),
-        bases_datos=obtener_bases_datos(),
-        modelo_seleccionado="",
-        base_seleccionada="",
-        columna_objetivo=None,
-        atributos=[],
-        valores={},
-        resultado=None,
-        explicacion=None,
-        error=None
+        "training.html",
+        pagina_actual="entrenar"
     )
 
 
@@ -186,7 +185,6 @@ def clasificar():
             algoritmo = paquete["algoritmo"]
             precision = paquete["precision"]
 
-            # Comprueba que el número de atributos sea correcto.
             cantidad_esperada = getattr(
                 modelo,
                 "n_features_in_",
@@ -267,7 +265,8 @@ def clasificar():
         valores=valores,
         resultado=resultado,
         explicacion=explicacion,
-        error=error
+        error=error,
+        pagina_actual="clasificar"
     )
 
 

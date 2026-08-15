@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Entrenar modelo</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/classify.css') }}"
+    >
+</head>
+
+<body>
+    {% include "_navbar.html" %}
+
+    <main class="contenedor">
+        <section class="tarjeta">
+            <h1>ENTRENAR MODELO</h1>
+
+            <div class="separador"></div>
+
+            <form
+                action="{{ url_for('entrenar') }}"
+                method="POST"
+                class="formulario-entrenamiento"
+            >
+                <div class="campo-selector">
+                    <label for="base-datos-entrenamiento">
+                        Base de datos
+                    </label>
+
+                    <select
+                        id="base-datos-entrenamiento"
+                        name="base_datos"
+                        required
+                    >
+                        <option value="">
+                            Selecciona una base de datos
+                        </option>
+
+                        {% for base in bases_datos %}
+                            <option value="{{ base }}">
+                                {{ base }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="campo-selector">
+                    <label for="algoritmo">
+                        Algoritmo
+                    </label>
+
+                    <select
+                        id="algoritmo"
+                        name="algoritmo"
+                        required
+                    >
+                        <option value="">
+                            Selecciona un algoritmo
+                        </option>
+
+                        <option value="id3">
+                            Árbol de decisión ID3
+                        </option>
+
+                        <option value="knn">
+                            K vecinos más cercanos
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit">
+                    ENTRENAR MODELO
+                </button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

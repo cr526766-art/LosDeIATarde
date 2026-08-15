@@ -1,0 +1,29 @@
+<nav class="barra-navegacion">
+    <div class="marca">
+        LOS DE IA TARDE
+    </div>
+
+    <div class="opciones-navegacion">
+        <a
+            href="{{ url_for('entrenar') }}"
+            class="opcion-nav
+                {% if pagina_actual == 'entrenar' %}
+                    activa
+                {% endif %}
+            "
+        >
+            Entrenar modelo
+        </a>
+
+        <a
+            href="{{ url_for('clasificar') }}"
+            class="opcion-nav
+                {% if pagina_actual == 'clasificar' %}
+                    activa
+                {% endif %}
+            "
+        >
+            Clasificar
+        </a>
+    </div>
+</nav>
