@@ -121,10 +121,12 @@
 
                                 <input
                                     id="atributo-{{ loop.index }}"
-                                    type="number"
+                                    type="text"
                                     name="{{ atributo }}"
                                     value="{{ valores.get(atributo, '') }}"
                                     step="any"
+                                    imputmode="decimal"
+                                    maxlength="5"
                                     required
                                 >
                             </div>
