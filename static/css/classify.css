@@ -229,6 +229,52 @@ button:hover {
     }
 }
 
+.explicacion {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
 
+.explicacion h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.contenido-explicacion h1,
+.contenido-explicacion h2,
+.contenido-explicacion h3,
+.contenido-explicacion h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contenido-explicacion p {
+    margin: 10px 0;
+}
+
+.contenido-explicacion ul,
+.contenido-explicacion ol {
+    padding-left: 25px;
+}
+
+.contenido-explicacion table {
+    width: 100%;
+    margin: 15px 0;
+    border-collapse: collapse;
+}
+
+.contenido-explicacion th,
+.contenido-explicacion td {
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    text-align: left;
+}
+
+.contenido-explicacion th {
+    background-color: #dddddd;
+}
 
 

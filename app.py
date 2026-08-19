@@ -2,7 +2,12 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
+import markdown
+
+from markupsafe import escape
 from flask import Flask, render_template, request, redirect, url_for
+from algorithms.explicacion_ia import generar_explicacion
+
 
 app = Flask(__name__)
 
@@ -231,19 +236,28 @@ def clasificar():
                 prediccion = modelo.predict(entrada)
                 resultado = str(prediccion[0])
 
-                explicacion = (
-                    f"El modelo {algoritmo} analizó los atributos "
-                    f"de la base de datos {base_seleccionada} y "
-                    f"determinó que el resultado para "
-                    f"'{columna_objetivo}' es: {resultado}."
+                # explicacion = (
+                #     f"El modelo {algoritmo} analizó los atributos "
+                #     f"de la base de datos {base_seleccionada} y "
+                #     f"determinó que el resultado para "
+                #     f"'{columna_objetivo}' es: {resultado}."
+                # )
+
+
+                explicacion_markdown = generar_explicacion(
+                    resultado= resultado,
+                    modelo_seleccionado = modelo_seleccionado,
+                    base_seleccionada = base_seleccionada,
+                    valores = valores,
+                    algoritmo = algoritmo,
+                    precision = precision
                 )
 
-                if precision is not None:
-                    explicacion += (
-                        f" La precisión registrada durante el "
-                        f"entrenamiento fue de "
-                        f"{precision * 100:.2f}%."
-                    )
+                explicacion = markdown.markdown(
+                str(escape(explicacion_markdown)),
+                extensions=["tables", "fenced_code"]
+                )
+               
 
         except (ValueError, FileNotFoundError) as excepcion:
             error = str(excepcion)

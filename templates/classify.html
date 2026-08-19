@@ -164,17 +164,17 @@
                 </span>
             </div>
 
-            <div class="explicacion">
-                <h2>Explicación</h2>
+           
 
-                <p>
-                    {% if explicacion %}
-                        {{ explicacion }}
-                    {% else %}
-                        Aquí aparecerá la explicación de la predicción.
-                    {% endif %}
-                </p>
+            {% if explicacion %}
+            <div class="explicacion">
+                <h3>Explicación generada con inteligencia artificial</h3>
+                <div class="contenido-explicacion">
+                    {{ explicacion | safe }}
+                </div>
             </div>
+            {% endif %}
+
         </section>
     </main>
     </body>
