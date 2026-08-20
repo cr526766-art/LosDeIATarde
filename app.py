@@ -143,7 +143,7 @@ def cargar_base_datos(nombre_archivo):
 # La dirección principal abre la pantalla de clasificación.
 @app.route("/")
 def inicio():
-    return redirect(url_for("clasificar"))
+    return redirect(url_for("entrenar"))
 
 
 # Esta ruta únicamente muestra la pantalla de entrenamiento.
