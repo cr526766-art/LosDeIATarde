@@ -123,11 +123,11 @@
 
                                 <input
                                     id="atributo-{{ loop.index }}"
-                                    type="text"
+                                    type="number"
                                     name="{{ atributo }}"
                                     value="{{ valores.get(atributo, '') }}"
                                     step="any"
-                                    imputmode="decimal"
+                                    imputmode="numeric"
                                     maxlength="5"
                                     required
                                 >

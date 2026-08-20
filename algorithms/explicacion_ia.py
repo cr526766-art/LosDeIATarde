@@ -22,35 +22,42 @@ def generar_explicacion(
         )
 
     client = Groq(api_key=api_key)
-
+    
     prompt = """
-    Eres un profesor experto en inteligencia artificial y aprendizaje
-    automático.
 
-    Tu tarea es explicar el resultado de una clasificación a un estudiante.
+Eres un biólogo experto en análisis de datos biológicos, clasificación de
+especies y aprendizaje automático. Explica el resultado a un estudiante de
+forma concreta, clara, breve y científicamente responsable.
 
-    Sigue obligatoriamente estas reglas:
+REGLAS:
 
-    1. No uses tablas.
-    2. No hagas una ficha técnica.
-    3. No repitas únicamente los datos recibidos.
-    4. Explica en párrafos por qué los valores ingresados llevaron al modelo
-       a elegir la clase obtenida.
-    5. Explica cuáles atributos fueron relevantes para distinguir esa clase.
-    6. Utiliza lenguaje sencillo, claro y educativo.
-    7. No inventes porcentajes, reglas, umbrales ni valores que no fueron
-       proporcionados.
-    8. Si no se proporcionaron las reglas internas del modelo, aclara que la
-       explicación describe la interpretación general del resultado y no el
-       recorrido exacto del árbol.
-    9. Organiza la respuesta solamente con estos apartados:
+- No uses tablas ni fichas técnicas.
+- No repitas innecesariamente todos los datos.
+- Explica cómo la combinación de atributos se relaciona con la clase predicha.
+- Menciona solo los atributos que parezcan relevantes.
+- No inventes unidades, rangos, porcentajes, umbrales, probabilidades,
+  características biológicas ni reglas internas del modelo.
+- Si faltan las reglas del modelo, aclara brevemente que es una interpretación
+  biológica general, no el proceso exacto de decisión.
+- La precisión representa el rendimiento general del modelo, no la
+  probabilidad de que esta predicción sea correcta.
+- Usa lenguaje sencillo, párrafos cortos y evita información de relleno.
 
-       ### Resultado obtenido
-       ### ¿Por qué se obtuvo este resultado?
-       ### Interpretación de los valores
-       ### Conclusión
+Revisa si algún valor parece demasiado alto, bajo o diferente. Considera como
+posibles causas un punto decimal, unidad, escala o error de captura. No afirmes
+que es incorrecto sin conocer las unidades, rangos normales y datos de
+entrenamiento. Si parece sospechoso, indica qué valor revisar y cómo podría
+afectar la clasificación.
 
-    La parte más importante es explicar el motivo de la clasificación.
+Responde únicamente con estas secciones:
+
+### Resultado obtenido
+### ¿Por qué se obtuvo?
+### Interpretación biológica
+### Revisión de los datos
+### Conclusión
+
+La respuesta debe tener entre 180 y 300 palabras.
     """
 
     precision_texto = (
@@ -60,21 +67,19 @@ def generar_explicacion(
     )
 
     mensaje_usuario = f"""
-    Se realizó una clasificación mediante aprendizaje automático.
+Explica esta clasificación:
 
-    Modelo seleccionado: {modelo_seleccionado}
-    Algoritmo utilizado: {algoritmo or "No especificado"}
-    Base de datos: {base_seleccionada}
-    Valores ingresados: {valores}
-    Clase predicha: {resultado}
-    Precisión registrada: {precision_texto}
+Modelo: {modelo_seleccionado}
+Algoritmo: {algoritmo or "No especificado"}
+Base de datos: {base_seleccionada}
+Valores: {valores}
+Resultado: {resultado}
+Precisión general: {precision_texto}
 
-    Explica principalmente por qué el modelo relacionó estos valores con
-    la clase "{resultado}". No presentes una tabla ni una lista de
-    especificaciones. Desarrolla una explicación narrativa para un
-    estudiante.
-    """
-
+Revisa posibles valores atípicos o errores de captura antes de explicar el
+resultado. Si faltan unidades, rangos o reglas internas, indícalo brevemente.
+"""
+ 
     try:
         respuesta = client.chat.completions.create(
             messages=[
@@ -88,8 +93,8 @@ def generar_explicacion(
                 },
             ],
             model="openai/gpt-oss-120b",
-            temperature=0.2,
-            max_tokens=500,
+            temperature=0.15,
+            max_tokens=850,
         )
 
         contenido = respuesta.choices[0].message.content
