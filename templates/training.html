@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entrenamiento</title>
+
+    <!-- CSS NAVBAR -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/navbar.css') }}"
+    >
+
+    <!-- CSS TRAINING -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/training.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    {% include "navbar.html" %}
+
+
+    <!-- CONTENIDO DE LA PÁGINA -->
+    <main class="contenedor-pagina">
+
+        <div class="contenedor-entrenamiento">
+
+            <h1>ENTRENAMIENTO</h1>
+
+            <div class="linea"></div>
+
+
+            <!-- FORMULARIO -->
+            <form
+                method="POST"
+                action="{{ url_for('training') }}"
+                enctype="multipart/form-data"
+            >
+
+                <!-- DATASET -->
+                <div class="grupo">
+
+                    <label>Select Dataset</label>
+
+                    <div class="archivo">
+
+                        <input
+                            type="file"
+                            name="dataset"
+                            id="dataset"
+                            accept=".csv,.arff"
+                        >
+
+                        <div
+                            class="texto-archivo"
+                            id="nombreArchivo"
+                        >
+                            CARGAR
+                        </div>
+
+                        <div class="flecha">
+                            ↓
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="linea linea-pequena"></div>
+
+
+                <!-- ALGORITMO -->
+                <div class="fila-algoritmo">
+
+                    <label for="algorithm">
+                        Select ML Algorithm
+                    </label>
+
+                    <select
+                        name="algorithm"
+                        id="algorithm"
+                        required
+                    >
+
+                        <option value="">
+                            Seleccionar
+                        </option>
+
+                        <option value="id3">
+                            ID3
+                        </option>
+
+                        <option value="knn">
+                            K-NN
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+                <button
+                    type="submit"
+                    class="btn-train"
+                >
+                    TRAIN
+                </button>
+
+
+                <!-- MENSAJE -->
+                {% if mensaje %}
+
+                    <p class="mensaje">
+                        {{ mensaje }}
+                    </p>
+
+                {% endif %}
+
+            </form>
+
+
+            <!-- MÉTRICAS -->
+            <div class="metricas">
+
+                <!-- ACCURACY -->
+                <div class="metrica">
+
+                    <div class="nombre-metrica">
+                        Accuracy :
+                    </div>
+
+                    <div class="valor-metrica">
+
+                        {% if accuracy is defined %}
+                            {{ accuracy }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRECISION -->
+                <div class="metrica">
+
+                    <div class="nombre-metrica">
+                        Precision :
+                    </div>
+
+                    <div class="valor-metrica">
+
+                        {% if precision is defined %}
+                            {{ precision }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECALL -->
+                <div class="metrica">
+
+                    <div class="nombre-metrica">
+                        Recall :
+                    </div>
+
+                    <div class="valor-metrica">
+
+                        {% if recall is defined %}
+                            {{ recall }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- F1 SCORE -->
+                <div class="metrica">
+
+                    <div class="nombre-metrica">
+                        F1 - Score :
+                    </div>
+
+                    <div class="valor-metrica">
+
+                        {% if f1_score is defined %}
+                            {{ f1_score }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUPPORT -->
+                <div class="metrica">
+
+                    <div class="nombre-metrica">
+                        Support :
+                    </div>
+
+                    <div class="valor-metrica">
+
+                        {% if support is defined %}
+                            {{ support }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- SCRIPT PARA MOSTRAR EL NOMBRE DEL DATASET -->
+    <script>
+
+        const dataset =
+            document.getElementById("dataset");
+
+        const nombreArchivo =
+            document.getElementById("nombreArchivo");
+
+
+        dataset.addEventListener("change", function () {
+
+            if (this.files.length > 0) {
+
+                nombreArchivo.textContent =
+                    this.files[0].name;
+
+            } else {
+
+                nombreArchivo.textContent =
+                    "CARGAR";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

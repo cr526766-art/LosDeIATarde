@@ -1,0 +1,306 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contenedor-pagina {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    min-height: calc(100vh - 62px);
+
+    padding-top: 30px;
+}
+
+.contenedor-entrenamiento {
+    width: 405px;
+    padding: 20px;
+
+    background-color: #e1ffc9;
+}
+
+/* CONTENEDOR VERDE */
+
+.contenedor-principal {
+
+    width: 405px;
+
+    background-color: #e8ffd0;
+
+    padding: 16px;
+}
+
+
+/* PANEL BLANCO */
+
+.panel {
+
+    background-color: white;
+
+    padding: 20px 16px;
+
+    min-height: 455px;
+}
+
+
+/* TITULO */
+
+h1 {
+
+    text-align: center;
+
+    font-size: 30px;
+
+    margin-top: 0;
+    margin-bottom: 18px;
+
+    font-weight: bold;
+}
+
+
+/* LINEAS VERDES */
+
+.linea {
+
+    width: 100%;
+
+    height: 11px;
+
+    background-color: #e8ffd0;
+
+    margin-bottom: 22px;
+}
+
+
+.linea-pequena {
+
+    margin-bottom: 14px;
+}
+
+
+/* CAMPOS */
+
+.grupo {
+
+    margin-bottom: 18px;
+}
+
+
+label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 9px;
+}
+
+
+/* ARCHIVO */
+
+.archivo {
+
+    width: 100%;
+
+    height: 22px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background-color: #d9d9d9;
+
+    cursor: pointer;
+}
+
+
+.archivo input[type="file"] {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+
+.texto-archivo {
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    line-height: 22px;
+
+    pointer-events: none;
+}
+
+
+.flecha {
+
+    position: absolute;
+
+    right: 8px;
+    top: 0;
+
+    line-height: 22px;
+
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+
+/* SELECT ALGORITMO */
+
+.fila-algoritmo {
+
+    display: grid;
+
+    grid-template-columns: 145px 1fr;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+
+.fila-algoritmo label {
+
+    margin: 0;
+}
+
+
+select {
+
+    width: 100%;
+
+    height: 22px;
+
+    border: none;
+
+    background-color: #d9d9d9;
+
+    padding-left: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+
+/* BOTÓN TRAIN */
+
+.btn-train {
+
+    width: 100%;
+
+    height: 26px;
+
+    border: none;
+
+    background-color: #d9d9d9;
+
+    color: black;
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    margin-bottom: 24px;
+
+    transition: 0.2s;
+}
+
+
+.btn-train:hover {
+
+    background-color: #c3c3c3;
+}
+
+
+.btn-train:active {
+
+    transform: scale(0.99);
+}
+
+
+/* MÉTRICAS */
+
+.metricas {
+
+    width: 100%;
+}
+
+
+.metrica {
+
+    display: grid;
+
+    grid-template-columns: 145px 1fr;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.nombre-metrica {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    padding-left: 8px;
+}
+
+
+.valor-metrica {
+
+    background-color: #d9d9d9;
+
+    height: 21px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 450px) {
+
+    .contenedor-principal {
+
+        width: 95%;
+    }
+
+}
