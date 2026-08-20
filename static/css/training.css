@@ -1,306 +1,192 @@
-* {
-    box-sizing: border-box;
-}
-
-
+/* Página completa */
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: white;
 }
+
+/* Contenedor principal */
 .contenedor-pagina {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-
-    min-height: calc(100vh - 62px);
-
-    padding-top: 30px;
+    padding: 20px 10px;
 }
 
+/* Caja de entrenamiento */
 .contenedor-entrenamiento {
-    width: 405px;
-    padding: 20px;
-
-    background-color: #e1ffc9;
-}
-
-/* CONTENEDOR VERDE */
-
-.contenedor-principal {
-
-    width: 405px;
-
-    background-color: #e8ffd0;
-
-    padding: 16px;
-}
-
-
-/* PANEL BLANCO */
-
-.panel {
+    width: 620px;
+    min-height: 570px;
+    padding: 32px 36px;
+    box-sizing: border-box;
 
     background-color: white;
-
-    padding: 20px 16px;
-
-    min-height: 455px;
+    border: 2px solid #8a42ff;
+    border-radius: 5px;
 }
 
-
-/* TITULO */
-
-h1 {
-
+/* Título */
+.contenedor-entrenamiento h1 {
+    margin: 0 0 25px;
     text-align: center;
-
-    font-size: 30px;
-
-    margin-top: 0;
-    margin-bottom: 18px;
-
-    font-weight: bold;
-}
-
-
-/* LINEAS VERDES */
-
-.linea {
-
-    width: 100%;
-
-    height: 11px;
-
-    background-color: #e8ffd0;
-
-    margin-bottom: 22px;
-}
-
-
-.linea-pequena {
-
-    margin-bottom: 14px;
-}
-
-
-/* CAMPOS */
-
-.grupo {
-
-    margin-bottom: 18px;
-}
-
-
-label {
-
-    display: block;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 9px;
-}
-
-
-/* ARCHIVO */
-
-.archivo {
-
-    width: 100%;
-
-    height: 22px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background-color: #d9d9d9;
-
-    cursor: pointer;
-}
-
-
-.archivo input[type="file"] {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-
-    cursor: pointer;
-}
-
-
-.texto-archivo {
-
-    width: 100%;
-
-    text-align: center;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    line-height: 22px;
-
-    pointer-events: none;
-}
-
-
-.flecha {
-
-    position: absolute;
-
-    right: 8px;
-    top: 0;
-
-    line-height: 22px;
-
-    font-size: 17px;
-
-    pointer-events: none;
-}
-
-
-/* SELECT ALGORITMO */
-
-.fila-algoritmo {
-
-    display: grid;
-
-    grid-template-columns: 145px 1fr;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 28px;
-}
-
-
-.fila-algoritmo label {
-
-    margin: 0;
-}
-
-
-select {
-
-    width: 100%;
-
-    height: 22px;
-
-    border: none;
-
-    background-color: #d9d9d9;
-
-    padding-left: 8px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    outline: none;
-}
-
-
-/* BOTÓN TRAIN */
-
-.btn-train {
-
-    width: 100%;
-
-    height: 26px;
-
-    border: none;
-
-    background-color: #d9d9d9;
-
+    font-size: 34px;
     color: black;
+}
 
+/* Líneas verdes */
+.linea {
+    width: 100%;
+    height: 12px;
+    margin: 20px 0 25px;
+    background-color: #ddffc9;
+}
+
+/* Cada sección del formulario */
+.grupo {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+/* Etiquetas */
+.grupo label {
+    text-align: right;
+    font-size: 16px;
     font-weight: bold;
-
-    font-size: 13px;
-
-    cursor: pointer;
-
-    margin-bottom: 24px;
-
-    transition: 0.2s;
+    color: black;
 }
 
-
-.btn-train:hover {
-
-    background-color: #c3c3c3;
-}
-
-
-.btn-train:active {
-
-    transform: scale(0.99);
-}
-
-
-/* MÉTRICAS */
-
-.metricas {
-
+/* Área para seleccionar el archivo */
+.archivo {
     width: 100%;
 }
 
-
-.metrica {
-
-    display: grid;
-
-    grid-template-columns: 145px 1fr;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 15px;
-}
-
-
-.nombre-metrica {
-
+/* Input de archivo */
+.archivo input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 6px;
+    background-color: #eeeeee;
     font-size: 14px;
-
-    font-weight: bold;
-
-    padding-left: 8px;
 }
 
+/* Lista de algoritmos */
+.grupo select {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    box-sizing: border-box;
 
-.valor-metrica {
+    border: none;
+    border-radius: 6px;
+    outline: none;
 
-    background-color: #d9d9d9;
+    background-color: #eeeeee;
+    color: black;
+    font-size: 16px;
+}
 
-    height: 21px;
+/* Botón de entrenamiento */
+button,
+.boton-entrenar,
+input[type="submit"] {
+    width: 100%;
+    height: 42px;
+    margin: 20px 0 25px;
 
-    display: flex;
+    border: none;
+    border-radius: 5px;
 
-    justify-content: center;
+    background-color: #6825d4;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Efecto del botón */
+button:hover,
+.boton-entrenar:hover,
+input[type="submit"]:hover {
+    background-color: #5720b1;
+}
+
+/* Contenedor de resultados */
+.resultados {
+    margin-top: 15px;
+}
+
+/* Cada métrica */
+.resultado,
+.metrica {
+    display: grid;
+    grid-template-columns: 115px 1fr;
     align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
 
-    font-size: 13px;
+/* Nombre de la métrica */
+.resultado label,
+.metrica label {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
 
+/* Valor de la métrica */
+.resultado span,
+.metrica span,
+.resultado input,
+.metrica input {
+    min-height: 35px;
+    padding: 7px 12px;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: 2px solid #888888;
+    background-color: transparent;
+
+    color: #6825d4;
+    font-size: 16px;
     font-weight: bold;
 }
 
+/* Mensajes */
+.mensaje,
+.error {
+    margin: 15px 0;
+    padding: 12px;
+    text-align: center;
+    background-color: #eeeeee;
+}
 
-/* RESPONSIVE */
+.error {
+    color: #b00020;
+}
 
-@media (max-width: 450px) {
-
-    .contenedor-principal {
-
-        width: 95%;
+/* Adaptación para celular */
+@media (max-width: 650px) {
+    .contenedor-entrenamiento {
+        width: 100%;
+        padding: 25px 20px;
     }
 
+    .grupo {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .grupo label {
+        text-align: left;
+    }
+
+    .resultado,
+    .metrica {
+        grid-template-columns: 105px 1fr;
+    }
 }
