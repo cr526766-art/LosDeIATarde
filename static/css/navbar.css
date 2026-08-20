@@ -9,6 +9,8 @@ body {
 .barra-navegacion {
     width: 100%;
     height: 62px;
+    min-height: 70px;
+    box-sizing: border-box;
 
     display: flex;
     justify-content: space-between;
@@ -21,9 +23,11 @@ body {
 
 .marca {
     color: white;
-    font-size: 20px;
-    font-weight: bold;
+    padding: 0 40px;
+    background-color: #6424ca;
+    color: white;
 }
+
 
 .opciones-navegacion {
     display: flex;
@@ -31,13 +35,7 @@ body {
     gap: 45px;
 }
 
-.opcion-nav {
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    padding: 20px 8px;
-}
+
 
 .opcion-nav:hover {
     background-color: rgba(255, 255, 255, 0.15);
@@ -45,4 +43,46 @@ body {
 
 .opcion-nav.activa {
     border-bottom: 4px solid white;
+    align-items: stretch;
+    min-height: 70px;
+    background-color: white;
+    color: #6424ca;
+}
+
+.opcion-nav {
+    display: flex;
+    align-items: center;
+
+    padding: 0 25px;
+
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: background-color 0.2s;
+}
+
+
+
+
+
+@media (max-width: 650px) {
+    .barra-navegacion {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .opciones-navegacion {
+        width: 100%;
+        min-height: auto;
+        margin-top: 15px;
+    }
+
+    .opcion-nav {
+        flex: 1;
+        justify-content: center;
+        padding: 15px 5px;
+        text-align: center;
+    }
 }
