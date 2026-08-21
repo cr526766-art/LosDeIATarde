@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Entrenamiento</title>
 
@@ -26,7 +30,7 @@
     {% include "navbar.html" %}
 
 
-    <!-- CONTENIDO DE LA PÁGINA -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="contenedor-pagina">
 
         <div class="contenedor-entrenamiento">
@@ -43,10 +47,12 @@
                 enctype="multipart/form-data"
             >
 
-                <!-- DATASET -->
+                <!-- SELECCIONAR DATASET -->
                 <div class="grupo">
 
-                    <label>Select Dataset</label>
+                    <label for="dataset">
+                        Seleccionar base de datos
+                    </label>
 
                     <div class="archivo">
 
@@ -55,32 +61,32 @@
                             name="dataset"
                             id="dataset"
                             accept=".csv,.arff"
+                            required
                         >
 
-                        <div
-                            class="texto-archivo"
-                            id="nombreArchivo"
+                        <label
+                            for="dataset"
+                            class="selector-archivo"
                         >
-                            CARGAR
-                        </div>
+                            <span id="nombreArchivo">
+                                Seleccione una base de datos
+                            </span>
 
-                        <div class="flecha">
-                            ↓
-                        </div>
+                            <span class="flecha">
+                                ↓
+                            </span>
+                        </label>
 
                     </div>
 
                 </div>
 
 
-                <div class="linea linea-pequena"></div>
-
-
-                <!-- ALGORITMO -->
-                <div class="fila-algoritmo">
+                <!-- SELECCIONAR ALGORITMO -->
+                <div class="grupo">
 
                     <label for="algorithm">
-                        Select ML Algorithm
+                        Seleccionar algoritmo
                     </label>
 
                     <select
@@ -90,7 +96,7 @@
                     >
 
                         <option value="">
-                            Seleccionar
+                            Seleccione un algoritmo
                         </option>
 
                         <option value="id3">
@@ -106,127 +112,160 @@
                 </div>
 
 
-                <!-- BOTÓN -->
+                <!-- BOTÓN ENTRENAR -->
                 <button
                     type="submit"
                     class="btn-train"
                 >
-                    TRAIN
+                    ENTRENAR MODELO
                 </button>
+
+
+                <div class="linea"></div>
 
 
                 <!-- MENSAJE -->
                 {% if mensaje %}
 
-                    <p class="mensaje">
+                    <div class="mensaje">
                         {{ mensaje }}
-                    </p>
+                    </div>
 
                 {% endif %}
 
-            </form>
+
+                <!-- CONTENEDOR DE MÉTRICAS -->
+                <div class="contenedor-metricas">
+
+                    {% if accuracy is defined %}
+
+                        <!-- ACCURACY -->
+                        <div class="metrica">
+
+                            <div class="nombre-metrica">
+                                Accuracy:
+                            </div>
+
+                            <div class="valor-metrica">
+                                {{ accuracy }}
+                            </div>
+
+                        </div>
 
 
-            <!-- MÉTRICAS -->
-            <div class="metricas">
+                        <!-- PRECISION -->
+                        <div class="metrica">
 
-                <!-- ACCURACY -->
-                <div class="metrica">
+                            <div class="nombre-metrica">
+                                Precision:
+                            </div>
 
-                    <div class="nombre-metrica">
-                        Accuracy :
+                            <div class="valor-metrica">
+
+                                {% if precision is defined %}
+                                    {{ precision }}
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- RECALL -->
+                        <div class="metrica">
+
+                            <div class="nombre-metrica">
+                                Recall:
+                            </div>
+
+                            <div class="valor-metrica">
+
+                                {% if recall is defined %}
+                                    {{ recall }}
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- F1 SCORE -->
+                        <div class="metrica">
+
+                            <div class="nombre-metrica">
+                                F1 - Score:
+                            </div>
+
+                            <div class="valor-metrica">
+
+                                {% if f1_score is defined %}
+                                    {{ f1_score }}
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SUPPORT -->
+                        <div class="metrica">
+
+                            <div class="nombre-metrica">
+                                Support:
+                            </div>
+
+                            <div class="valor-metrica">
+
+                                {% if support is defined %}
+                                    {{ support }}
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <!-- MENSAJE INICIAL -->
+                        <div class="mensaje-inicial">
+
+                            Selecciona una base de datos y un algoritmo
+                            para entrenar el modelo y mostrar sus métricas.
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- RESULTADO -->
+                <div class="resultado-entrenamiento">
+
+                    <div class="titulo-resultado">
+                        Resultado:
                     </div>
 
-                    <div class="valor-metrica">
+                    <div class="estado-resultado">
 
                         {% if accuracy is defined %}
-                            {{ accuracy }}
+                            Entrenamiento completado
+                        {% else %}
+                            Pendiente
                         {% endif %}
 
                     </div>
 
                 </div>
 
-
-                <!-- PRECISION -->
-                <div class="metrica">
-
-                    <div class="nombre-metrica">
-                        Precision :
-                    </div>
-
-                    <div class="valor-metrica">
-
-                        {% if precision is defined %}
-                            {{ precision }}
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-
-                <!-- RECALL -->
-                <div class="metrica">
-
-                    <div class="nombre-metrica">
-                        Recall :
-                    </div>
-
-                    <div class="valor-metrica">
-
-                        {% if recall is defined %}
-                            {{ recall }}
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-
-                <!-- F1 SCORE -->
-                <div class="metrica">
-
-                    <div class="nombre-metrica">
-                        F1 - Score :
-                    </div>
-
-                    <div class="valor-metrica">
-
-                        {% if f1_score is defined %}
-                            {{ f1_score }}
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-
-                <!-- SUPPORT -->
-                <div class="metrica">
-
-                    <div class="nombre-metrica">
-                        Support :
-                    </div>
-
-                    <div class="valor-metrica">
-
-                        {% if support is defined %}
-                            {{ support }}
-                        {% endif %}
-
-                    </div>
-
-                </div>
-
-            </div>
+            </form>
 
         </div>
 
     </main>
 
 
-    <!-- SCRIPT PARA MOSTRAR EL NOMBRE DEL DATASET -->
+    <!-- MOSTRAR EL NOMBRE DEL ARCHIVO -->
     <script>
 
         const dataset =
@@ -246,7 +285,7 @@
             } else {
 
                 nombreArchivo.textContent =
-                    "CARGAR";
+                    "Seleccione una base de datos";
 
             }
 

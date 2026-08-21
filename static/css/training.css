@@ -1,306 +1,356 @@
+/* Configuración general */
 * {
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
 }
+
+
+/* Contenedor de la página */
 .contenedor-pagina {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-
-    min-height: calc(100vh - 62px);
-
-    padding-top: 30px;
+    padding: 20px 10px;
 }
 
+
+/* Caja principal de entrenamiento */
 .contenedor-entrenamiento {
-    width: 405px;
-    padding: 20px;
-
-    background-color: #e1ffc9;
-}
-
-/* CONTENEDOR VERDE */
-
-.contenedor-principal {
-
-    width: 405px;
-
-    background-color: #e8ffd0;
-
-    padding: 16px;
-}
-
-
-/* PANEL BLANCO */
-
-.panel {
+    width: 620px;
+    min-height: 570px;
+    padding: 32px 36px;
 
     background-color: white;
-
-    padding: 20px 16px;
-
-    min-height: 455px;
+    border: 2px solid #8a42ff;
+    border-radius: 5px;
 }
 
 
-/* TITULO */
-
-h1 {
-
+/* Título */
+.contenedor-entrenamiento h1 {
+    margin: 0 0 25px;
     text-align: center;
-
-    font-size: 30px;
-
-    margin-top: 0;
-    margin-bottom: 18px;
-
-    font-weight: bold;
-}
-
-
-/* LINEAS VERDES */
-
-.linea {
-
-    width: 100%;
-
-    height: 11px;
-
-    background-color: #e8ffd0;
-
-    margin-bottom: 22px;
-}
-
-
-.linea-pequena {
-
-    margin-bottom: 14px;
-}
-
-
-/* CAMPOS */
-
-.grupo {
-
-    margin-bottom: 18px;
-}
-
-
-label {
-
-    display: block;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 9px;
-}
-
-
-/* ARCHIVO */
-
-.archivo {
-
-    width: 100%;
-
-    height: 22px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background-color: #d9d9d9;
-
-    cursor: pointer;
-}
-
-
-.archivo input[type="file"] {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-
-    cursor: pointer;
-}
-
-
-.texto-archivo {
-
-    width: 100%;
-
-    text-align: center;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    line-height: 22px;
-
-    pointer-events: none;
-}
-
-
-.flecha {
-
-    position: absolute;
-
-    right: 8px;
-    top: 0;
-
-    line-height: 22px;
-
-    font-size: 17px;
-
-    pointer-events: none;
-}
-
-
-/* SELECT ALGORITMO */
-
-.fila-algoritmo {
-
-    display: grid;
-
-    grid-template-columns: 145px 1fr;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 28px;
-}
-
-
-.fila-algoritmo label {
-
-    margin: 0;
-}
-
-
-select {
-
-    width: 100%;
-
-    height: 22px;
-
-    border: none;
-
-    background-color: #d9d9d9;
-
-    padding-left: 8px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    outline: none;
-}
-
-
-/* BOTÓN TRAIN */
-
-.btn-train {
-
-    width: 100%;
-
-    height: 26px;
-
-    border: none;
-
-    background-color: #d9d9d9;
-
+    font-size: 34px;
     color: black;
-
-    font-weight: bold;
-
-    font-size: 13px;
-
-    cursor: pointer;
-
-    margin-bottom: 24px;
-
-    transition: 0.2s;
 }
 
 
-.btn-train:hover {
-
-    background-color: #c3c3c3;
+/* Líneas verdes */
+.linea {
+    width: 100%;
+    height: 12px;
+    margin: 20px 0 25px;
+    background-color: #ddffc9;
 }
 
 
-.btn-train:active {
-
-    transform: scale(0.99);
-}
-
-
-/* MÉTRICAS */
-
-.metricas {
-
+/* Formulario */
+.contenedor-entrenamiento form {
     width: 100%;
 }
 
 
-.metrica {
-
+/* Filas del formulario */
+.grupo {
     display: grid;
-
-    grid-template-columns: 145px 1fr;
-
+    grid-template-columns: 230px 1fr;
     align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 15px;
+    gap: 20px;
+    margin-bottom: 18px;
 }
 
 
-.nombre-metrica {
-
-    font-size: 14px;
-
+/* Etiquetas del formulario */
+.grupo > label {
+    text-align: right;
+    font-size: 16px;
     font-weight: bold;
-
-    padding-left: 8px;
+    color: black;
 }
 
 
-.valor-metrica {
+/* Contenedor del archivo */
+.archivo {
+    width: 100%;
+}
 
-    background-color: #d9d9d9;
 
-    height: 21px;
+/* Ocultar el input original */
+.archivo input[type="file"] {
+    display: none;
+}
+
+
+/* Selector visual del archivo */
+.selector-archivo {
+    width: 100%;
+    min-height: 45px;
+    padding: 0 15px;
 
     display: flex;
-
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
 
-    font-size: 13px;
+    border-radius: 6px;
+    background-color: #eeeeee;
 
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+
+/* Efecto sobre el selector */
+.selector-archivo:hover {
+    background-color: #e3e3e3;
+}
+
+
+/* Nombre del archivo seleccionado */
+.selector-archivo #nombreArchivo {
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* Flecha del selector */
+.flecha {
+    margin-left: 10px;
+    color: black;
+    font-size: 18px;
+}
+
+
+/* Lista de algoritmos */
+.grupo select {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+
+    border: none;
+    border-radius: 6px;
+    outline: none;
+
+    background-color: #eeeeee;
+    color: black;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Efecto al seleccionar algoritmo */
+.grupo select:hover {
+    background-color: #e3e3e3;
+}
+
+.grupo select:focus {
+    outline: 2px solid #8a42ff;
+}
+
+
+/* Botón para entrenar */
+.btn-train {
+    width: 100%;
+    height: 42px;
+    margin: 25px 0;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #6825d4;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+
+/* Efecto del botón */
+.btn-train:hover {
+    background-color: #5720b1;
+}
+
+.btn-train:active {
+    background-color: #481990;
+}
+
+
+/* Mensajes enviados por Flask */
+.mensaje {
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+
+    border-radius: 4px;
+    background-color: #eeeeee;
+
+    text-align: center;
+    color: #333333;
+    font-size: 15px;
+}
+
+
+/* Contenedor gris de las métricas */
+.contenedor-metricas {
+    width: 100%;
+    min-height: 85px;
+    margin-top: 20px;
+    padding: 20px;
+
+    background-color: #f2f2f2;
+}
+
+
+/* Mensaje mostrado antes del entrenamiento */
+.mensaje-inicial {
+    padding: 7px;
+    text-align: center;
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+
+/* Cada métrica */
+.metrica {
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+
+/* Quitar espacio a la última métrica */
+.metrica:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Nombre de la métrica */
+.nombre-metrica {
+    color: black;
+    font-size: 16px;
     font-weight: bold;
 }
 
 
-/* RESPONSIVE */
+/* Valor de la métrica */
+.valor-metrica {
+    min-height: 32px;
+    padding: 6px 10px;
 
-@media (max-width: 450px) {
+    border-bottom: 2px solid #888888;
+    background-color: white;
 
-    .contenedor-principal {
+    color: #6825d4;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        width: 95%;
+
+/* Resultado final */
+.resultado-entrenamiento {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+/* Texto Resultado */
+.titulo-resultado {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Estado pendiente o completado */
+.estado-resultado {
+    min-height: 28px;
+    padding: 2px 0 5px;
+
+    border-bottom: 2px solid #888888;
+
+    color: #6825d4;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Diseño para pantallas pequeñas */
+@media (max-width: 650px) {
+
+    .contenedor-pagina {
+        padding: 15px 10px;
+    }
+
+    .contenedor-entrenamiento {
+        width: 100%;
+        min-height: auto;
+        padding: 25px 20px;
+    }
+
+    .contenedor-entrenamiento h1 {
+        font-size: 28px;
+    }
+
+    .grupo {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .grupo > label {
+        text-align: left;
+    }
+
+    .resultado-entrenamiento {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .metrica {
+        grid-template-columns: 110px 1fr;
+        gap: 10px;
+    }
+
+}
+
+
+/* Diseño para celulares pequeños */
+@media (max-width: 400px) {
+
+    .contenedor-entrenamiento {
+        padding: 20px 15px;
+    }
+
+    .contenedor-entrenamiento h1 {
+        font-size: 25px;
+    }
+
+    .metrica {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .valor-metrica {
+        width: 100%;
     }
 
 }
